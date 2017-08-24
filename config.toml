@@ -1,9 +1,9 @@
 baseURL = "https://willgreenberg.github.io/blog/"
 languageCode = "en-us"
-title = "Will Greenberg"
+title = "Digestible"
 theme = "hemingway2"
 publishDir = "docs"
-description = "Projects and Thoughts"
+description = "Flicking the light switch on CS"
 keywords = ["keyword1", "keyword2"]
 
 [taxonomies]
