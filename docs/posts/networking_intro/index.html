@@ -1,0 +1,148 @@
+<body>
+  <!DOCTYPE html>
+<html lang="en-us">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta content="" name="keywords">
+<meta content="Flicking the light switch - illuminating the big scary Internet - Digestible" property="og:title">
+<title>Flicking the light switch - illuminating the big scary Internet | Digestible</title>
+<link rel="stylesheet" href="https://willgreenberg.github.io/blog//css/style.css">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+
+  <section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="https://willgreenberg.github.io/blog//"><h1 class="title is-4">Digestible</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="https://github.com/willgreenberg">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="subtitle is-6">August 23, 2017</h2>
+      <h1 class="title">Flicking the light switch - illuminating the big scary Internet</h1>
+      
+      <div class="content">
+        
+
+<p>Imagine standing in a pitch black room. You’ve been there a ton. In fact, you know how to get to all kinds of things around you. You walk over here to order a toaster on Amazon. You walk over there to RSVP to your friend’s birthday bar crawl. You turn around, take a few steps forward, and reach to your left to send a tweet.</p>
+
+<p>But you can’t see any of it. You’ve never seen any of it. You have no clue what lies between you and Twitter, or Amazon, or Facebook. You might be used to it — I think it’s fair to say most of us are <em>too</em> used to it.</p>
+
+<p>Christian Ternus gave a wonderful talk on the basics of networking and the Open Systems interconnection model, OSI, that essentially outlines the functionality of connections over the internet from the ground up. You could learn a whole lot from the Wikipedia pages on this stuff, but Christian’s conversational approach made it actually digestible. I’m going to try and do something similar here.
+&hellip;
+I know! It’s intimidating! But consider — this stuff is omnipresent. It’s ridiculously important. Every day it seems both more difficult to grasp and more difficult to get away from. Taking the magic out of it makes it less scary - it’s easy to fear what you don’t understand. Imagine flicking the light on in a pitch black room.</p>
+
+<h1 id="osi-model-layers">OSI Model Layers:</h1>
+
+<h2 id="hardware"><strong>Hardware</strong></h2>
+
+<h3 id="1-physical-bits-wifi">1. <strong>Physical</strong> - <em>Bits</em> - WiFi</h3>
+
+<ul>
+<li>Hardware layer</li>
+<li>Less critical for software developers (not interfaced programmatically) but good to know about since this stuff could indeed affect performance</li>
+</ul>
+
+<h2 id="kernel"><strong>Kernel</strong></h2>
+
+<h3 id="2-data-link-frames-ethernet">2. <strong>Data Link</strong> - <em>Frames</em> - Ethernet</h3>
+
+<ul>
+<li>1 Frame ~= 1500 bytes</li>
+<li>Provides node-to-node data transfer through a link directly between two nodes</li>
+<li>MAC (Media Access Control) - controls how devices on a network gain access to a medium and permission to transmit data</li>
+</ul>
+
+<h3 id="3-network-packets-ip-internet-protocol">3. <strong>Network</strong> - <em>Packets</em> - IP (Internet Protocol)</h3>
+
+<ul>
+<li>IPv4 - 4 bytes, 0.0.0.0 to 255.255.255.255
+
+<ul>
+<li>Originally considered <em>enough</em> addresses for everyone &hellip; back in the 70s before the internet was essentially omnipresent.</li>
+</ul></li>
+
+<li><p>IPv6 - 6 bytes, 0.0.0.0.0.0 to 255.255.255.255.255.255</p>
+
+<ul>
+<li>Introduced in the 90s, this time with the intention of truly having enough addresses for <em>everyone</em></li>
+<li>Problem is &hellip; plenty of legacy addresses were left stuck with hard coded IPv4 addresses. Many places still today don&rsquo;t have IPv6 addresses.</li>
+</ul>
+
+<p>What&rsquo;s the problem here? IPv6 addresses are not supported by lots of devices (i.e. early Android, Windows XP). [Come back to this re tunnel, translation]</p></li>
+</ul>
+
+<h3 id="4-transport-segments-tcp-transmission-control-protocol-udp">4. <strong>Transport</strong> - <em>Segments</em> - TCP (Transmission Control Protocol), UDP</h3>
+
+<ul>
+<li>Need a way to break up a bunch of data, since a packet can only hold about 1500 bytes.</li>
+<li>Jigsaw Puzzle - Imagine a client (user&rsquo;s computer) sends information as a collection of puzzle pieces (packets); each piece is numbered. TCP provides ways for the server to let the client know that &ldquo;hey, I&rsquo;ve gotten a few of those pieces, keep &lsquo;em coming.&rdquo; or &ldquo;you didn&rsquo;t send me piece number 6273!&rdquo;.</li>
+<li>For a TCP connection to be established, a server first has to be listening at a port for a connection to open up (known as a &ldquo;passive open&rdquo;). A client can initiate an active open to establish the connection - establishing the connection entails a &ldquo;three way handshake&rdquo;:
+
+<ol>
+<li>SYN: the client sends a SYN (synchronize) packet to the server, saying &ldquo;I want to connect with you.&rdquo; In this message the client sets a sequence number for the segment to some random number, call it A (less than about 30,000).</li>
+<li>SYN/ACK: the server responds with a SYN/ACK (synchronize/acknowledge) packet sent to the client. It contains an acknowledgement number set to A + 1.</li>
+<li>ACK: the client responds again with an ACK packet</li>
+</ol></li>
+</ul>
+
+<h2 id="user"><strong>User</strong></h2>
+
+<h3 id="5-session-sockets">5. <strong>Session</strong> - <em>Sockets</em></h3>
+
+<h3 id="6-presentation-ssl-secure-sockets-layer">6. <strong>Presentation</strong> - <em>SSL (Secure Sockets Layer)</em></h3>
+
+<ul>
+<li>Maybe a server wants to guarantee a client is who they claim to be - that&rsquo;s authentication. Maybe a client wants to ensure that they are connecting to the right server - that&rsquo;s [something].</li>
+<li>Public Key and Private Key
+
+<ul>
+<li>A certificate is a published public key.</li>
+<li>Anybody with that public key can use it</li>
+</ul></li>
+</ul>
+
+<h3 id="7-application-http-smtp-ssh-etc">7. <strong>Application</strong> - <em>HTTP, SMTP, SSH, etc.</em></h3>
+
+<p>Post Office analogy</p>
+
+<p>Frames - plastic buckets of mail
+Packets -</p>
+
+      </div>
+    </div>
+  </section>
+  
+
+  <section class="section">
+  <div class="container has-text-centered">
+    <p></p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+</body>

@@ -1,23 +1,34 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Will Greenberg</title>
+    <title>Posts on Digestible</title>
     <link>https://willgreenberg.github.io/blog/posts/</link>
-    <description>Recent content in Posts on Will Greenberg</description>
+    <description>Recent content in Posts on Digestible</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 22 Aug 2017 16:26:38 -0400</lastBuildDate>
+    <lastBuildDate>Wed, 23 Aug 2017 15:06:06 -0400</lastBuildDate>
     
 	<atom:link href="https://willgreenberg.github.io/blog/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>First Post</title>
+      <title>Flicking the light switch - illuminating the big scary Internet</title>
+      <link>https://willgreenberg.github.io/blog/posts/networking_intro/</link>
+      <pubDate>Wed, 23 Aug 2017 15:06:06 -0400</pubDate>
+      
+      <guid>https://willgreenberg.github.io/blog/posts/networking_intro/</guid>
+      <description>Imagine standing in a pitch black room. You’ve been there a ton. In fact, you know how to get to all kinds of things around you. You walk over here to order a toaster on Amazon. You walk over there to RSVP to your friend’s birthday bar crawl. You turn around, take a few steps forward, and reach to your left to send a tweet.
+But you can’t see any of it.</description>
+    </item>
+    
+    <item>
+      <title>Hello World!</title>
       <link>https://willgreenberg.github.io/blog/posts/first-post/</link>
       <pubDate>Tue, 22 Aug 2017 16:26:38 -0400</pubDate>
       
       <guid>https://willgreenberg.github.io/blog/posts/first-post/</guid>
-      <description>Welcome! This is my first crack at blogging - the folks at the Recurse Center convinced me to do it and helped me get set up. Now I can track my projects, share my thoughts, and explore whatever I want in a space I can share.</description>
+      <description>Naturally:
+int main() { cout &amp;lt;&amp;lt; &amp;quot;Hello World!&amp;quot; &amp;lt;&amp;lt; endl; }  :)</description>
     </item>
     
   </channel>
